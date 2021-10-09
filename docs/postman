@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "461e2748-818d-421d-be8a-f68430aa952d",
+		"name": "udaconnect",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all connections belonging to a person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30001/connection_api/:person_id/connections",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"connection_api",
+						":person_id",
+						"connections"
+					],
+					"variable": [
+						{
+							"key": "person_id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30001/location_api/location",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"location_api",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a new location",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n            id = 1,\r\n            person_id = 2,\r\n            longitude = '45.4323323',\r\n            latitude = '4.55433353',\r\n            creation_time = \"2019-01-01T00:00:00Z\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:30001/location_api/location",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"location_api",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a new person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    id = 1,\r\n    first_name = 'James',\r\n    last_name = 'Ononiwu,\r\n    company_name = 'Resach'\r\n}"
+				},
+				"url": {
+					"raw": "localhost:30001/person_api/person",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"person_api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30001/person_api/person",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"person_api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a location by its id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30001/location_api/location/:location_id",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"location_api",
+						"location",
+						":location_id"
+					],
+					"variable": [
+						{
+							"key": "location_id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a person by its' id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:30001/person_api/person/:person_id",
+					"host": [
+						"localhost"
+					],
+					"port": "30001",
+					"path": [
+						"person_api",
+						"person",
+						":person_id"
+					],
+					"variable": [
+						{
+							"key": "person_id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

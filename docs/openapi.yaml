@@ -1,0 +1,176 @@
+---
+openapi: 3.0.0
+info:
+  title: API Docs
+  description: API documentation for udaconnect project.
+  contact:
+    email: jamesononiwu@gmail.com
+  version: "1"
+servers:
+- url: localhost:30001/
+  description: localhost url
+tags:
+- name: Connections
+  description: End points to access routes for connections request actions
+- name: Locations
+  description: End points to access routes for location request actions
+- name: Person
+  description: End points to access routes for person request actions
+paths:
+  /connection_api/{person_id}/connections:
+    get:
+      tags:
+      - Connections
+      summary: get connections belonging to a person
+      operationId: getPersonConnections
+      parameters:
+      - name: person_id
+        in: path
+        description: The person ID  to be searched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: connection not found
+  /location_api/location:
+    get:
+      tags:
+      - Locations
+      summary: get  all locations
+      operationId: getLocations
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: connection not found
+    post:
+      tags:
+      - Locations
+      summary: creates a new locations data
+      operationId: createLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createLocation'
+            examples:
+              "0":
+                value:
+                  id: "1"
+                  person_id: "2"
+                  longitude: "45.4323323"
+                  latitude: "4.55433353"
+                  creation_time: 2019-01-01T00:00:00Z
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Server error
+  /location_api/locations/{location_id}:
+    get:
+      tags:
+      - Locations
+      summary: get a location by its id
+      operationId: getLocationById
+      parameters:
+      - name: location_id
+        in: path
+        description: The location ID  to be searched
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: location not found
+  /person_api/person/:
+    get:
+      tags:
+      - Person
+      summary: get  all persons
+      operationId: getPersons
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: connection not found
+    post:
+      tags:
+      - Person
+      summary: creates a new person data
+      operationId: createPerson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createPerson'
+            examples:
+              "0":
+                value:
+                  id: "1"
+                  first_name: mike
+                  last_name: spencer
+                  company_name: Lony Inc
+      responses:
+        "201":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "500":
+          description: Server error
+components:
+  schemas:
+    createLocation:
+      type: object
+      properties:
+        id:
+          type: string
+        person_id:
+          type: string
+        longitude:
+          type: string
+        latitude:
+          type: string
+        creation_time:
+          type: string
+    createPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        company_name:
+          type: string

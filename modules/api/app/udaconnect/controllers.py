@@ -20,7 +20,6 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 # TODO: This needs better exception handling
 
 
-@api.route("/locations")
 @api.route("/locations/<location_id>")
 @api.param("location_id", "Unique ID for a given Location", _in="query")
 class LocationResource(Resource):
@@ -37,7 +36,7 @@ class LocationResource(Resource):
         return location
 
 
-@api.route("/persons")
+@api.route("/person")
 class PersonsResource(Resource):
     @accepts(schema=PersonSchema)
     @responds(schema=PersonSchema)
@@ -65,6 +64,7 @@ class PersonResource(Resource):
 @api.param("start_date", "Lower bound of date range", _in="query")
 @api.param("end_date", "Upper bound of date range", _in="query")
 @api.param("distance", "Proximity to a given user in meters", _in="query")
+
 class ConnectionDataResource(Resource):
     @responds(schema=ConnectionSchema, many=True)
     def get(self, person_id) -> ConnectionSchema:

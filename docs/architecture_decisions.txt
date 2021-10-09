@@ -1,0 +1,3 @@
+by passing REST into Queue to resolve data that goes into the service,
+ we can use application logic to ensure data consistency.
+ by using both gRPC and REST APIs we can satisfy different requirements for different users.
