@@ -8,15 +8,15 @@ import location_pb2_grpc
 
 class LocationServicer(location_pb2_grpc.LocationServiceServicer):
     def Get(self, request, context):
-        first_location = location_pb2.LocationMessage(
+        location1 = location_pb2.LocationMessage(
             id = 1,
             person_id = 2,
-            longitude = '45.4323323',
-            latitude = '4.55433353',
+            longitude = '6.4323323',
+            latitude = '7.55433353',
             creation_time = "2019-01-01T00:00:00Z"
         )
 
-        second_location = location_pb2.LocationMessage(
+        location2 = location_pb2.LocationMessage(
             id = 2,
             person_id = 3,
             longitude = '7.4323323',
@@ -25,22 +25,22 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         )
 
         result = location_pb2.LocationMessageList()
-        result.locations.extend([first_location, second_location])
+        result.locations.extend([location1, location2])
         return result
 
     def Create(self, request, context):
         print("Received a message!")
 
-        request_value = {
-            "id": request.id,
+        new_request = {
+            "id":request.id,
             "person_id": request.person_id,
             "longitude": request.longitude,
             "latitude": request.latitude,
             "creation_time": request.creation_time
         }
-        print(request_value)
+        print(new_request)
 
-        return location_pb2.LocationMessage(**request_value)
+        return location_pb2.LocationMessage(**new_request)
 
 
 # Initialize gRPC server
@@ -48,8 +48,8 @@ server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
 location_pb2_grpc.add_LocationServiceServicer_to_server(LocationServicer(), server)
 
 
-print("Server starting on port 5005...")
-server.add_insecure_port("[::]:5005")
+print("Server starting on port 5007...")
+server.add_insecure_port("[::]:5007")
 server.start()
 # Keep thread alive
 try:

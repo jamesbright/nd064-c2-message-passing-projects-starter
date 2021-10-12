@@ -1,8 +1,8 @@
 
 
-from app.udaconnect.models import Location
-from app.udaconnect.schemas import   LocationSchema
-from app.udaconnect.services import  LocationService
+from app.udaconnect.models.LocationModel import Location
+from app.udaconnect.schemas.LocationSchema import   LocationSchema
+from app.udaconnect.services.LocationService import  LocationService
 from kafka import KafkaProducer
 from flask import  jsonify, request, g
 from flask_accepts import accepts, responds

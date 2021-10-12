@@ -1,16 +1,16 @@
-version: '3'
+version: '1'
 
-services:
-  api:
-    build: api
-    command: ["flask", "run", "--host=0.0.0.0"]
-    volumes:
-      - ./api:/backend
-    environment:
-      - FLASK_ENV=development
-      - FLASK_APP=app.py
-    ports:
-      - "5000:5000"
+#services:
+#  api:
+#    build: api
+#    command: ["flask", "run", "--host=0.0.0.0"]
+#    volumes:
+#      - ./api:/backend
+#    environment:
+#      - FLASK_ENV=development
+#      - FLASK_APP=app.py
+#    ports:
+#      - "5000:5000"
 
   person_api:
     build: person_api

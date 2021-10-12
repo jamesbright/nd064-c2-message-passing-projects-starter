@@ -3,8 +3,12 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 
 from app import db
-from app.udaconnect.models import Connection, Location, Person
-from app.udaconnect.schemas import ConnectionSchema, LocationSchema, PersonSchema
+from app.udaconnect.models.ConnectionModel import Connection
+from app.udaconnect.models.LocationModel import Location
+from app.udaconnect.models.PersonModel import Person
+from app.udaconnect.schemas.ConnectionSchema import ConnectionSchema
+from app.udaconnect.schemas.LocationSchema import LocationSchema
+from app.udaconnect.schemas.PersonSchema import  PersonSchema
 from geoalchemy2.functions import ST_AsText, ST_Point
 from sqlalchemy.sql import text
 

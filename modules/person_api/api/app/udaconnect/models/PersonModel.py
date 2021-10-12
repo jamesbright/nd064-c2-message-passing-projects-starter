@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from app import db  # noqa
+from app import db  
 from sqlalchemy import Column, Integer, String
 
 
